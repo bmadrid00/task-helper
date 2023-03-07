@@ -1,12 +1,8 @@
 {% extends 'base.html' %}
 
 {%block content%}
-<header>
-    <nav>
-        <a href={% url 'create_project' %}>Create project</a></li>
-    </nav>
-</header>
 <main>
+    <a href={% url 'create_project' %}>Create project</a></li>
     <div>
         <h1>My Projects</h1>
         {% if not projects %}
