@@ -1,27 +1,29 @@
 {% extends 'base.html' %}
 
-{%block content%}
-<main>
-    <a href={% url 'create_project' %}>Create project</a></li>
-    <div>
-        <h1>My Projects</h1>
-        {% if not projects %}
-        <p>You are not assigned to any projects</p>
-        {% else %}
-        <table>
-            <thead>
-                <th scope="col">Name</th>
-                <th scope="col">Number of tasks</th>
-            </thead>
-            <tbody>
-                {% for project in projects %}
-                <tr>
-                    <td scope="row"><a href = {% url 'show_project' project.id %}>{{project.name}}</a></td>
-                    <td scope="row">{{project.tasks.all|length}}</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-        {% endif %}
-</main>
-{%endblock content%}
+{% block content %}
+    <main>
+        <a href={% url 'create_project' %}>Create project</a>
+        <div>
+            <h1>My Projects</h1>
+            {% if not projects %}
+                <p>You are not assigned to any projects</p>
+            {% else %}
+                <table>
+                    <thead>
+                        <th scope="col">Name</th>
+                        <th scope="col">Number of tasks</th>
+                    </thead>
+                    <tbody>
+                        {% for project in projects %}
+                            <tr>
+                                <td scope="row">
+                                    <a href = {% url 'show_project' project.id %}>{{ project.name }}</a>
+                                </td>
+                                <td scope="row">{{ project.tasks.all|length }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% endif %}
+        </main>
+    {% endblock content %}
